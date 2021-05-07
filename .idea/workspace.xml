@@ -2,17 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1da3c26a-8668-413b-a744-50560f7b27f5" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/Readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/Readme.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/festiticket-dapp/abiCurrencyToken.js" beforeDir="false" afterPath="$PROJECT_DIR$/festiticket-dapp/abiCurrencyToken.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/festiticket-dapp/abiFestiTicket.js" beforeDir="false" afterPath="$PROJECT_DIR$/festiticket-dapp/abiFestiTicket.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/festiticket-dapp/abiFestivalShop.js" beforeDir="false" afterPath="$PROJECT_DIR$/festiticket-dapp/abiFestivalShop.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/festiticket-dapp/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/festiticket-dapp/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/festiticket-dapp/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/festiticket-dapp/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/festiticket/contracts/CurrencyToken.sol" beforeDir="false" afterPath="$PROJECT_DIR$/festiticket/contracts/CurrencyToken.sol" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/festiticket/contracts/FestiTicket.sol" beforeDir="false" afterPath="$PROJECT_DIR$/festiticket/contracts/FestiTicket.sol" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/festiticket/contracts/FestivalShop.sol" beforeDir="false" afterPath="$PROJECT_DIR$/festiticket/contracts/FestivalShop.sol" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/festiticket/migrations/2_migrate_FestiShop.js" beforeDir="false" afterPath="$PROJECT_DIR$/festiticket/migrations/2_migrate_FestiShop.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/festiticket/test/1_test.js" beforeDir="false" afterPath="$PROJECT_DIR$/festiticket/test/1_test.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,6 +12,7 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="GitSEFilterConfiguration">
     <file-type-list>
@@ -31,11 +23,15 @@
     </file-type-list>
   </component>
   <component name="ProjectId" id="1r3zx4SJcWyrCjiCXP6UpDxRXoY" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
@@ -63,11 +59,25 @@
       <workItem from="1619173439948" duration="6126000" />
       <workItem from="1620099891250" duration="31000" />
       <workItem from="1620099963659" duration="11617000" />
-      <workItem from="1620120470523" duration="40196000" />
+      <workItem from="1620120470523" duration="40904000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
 </project>
