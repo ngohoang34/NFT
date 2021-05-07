@@ -16,6 +16,7 @@ contract FestivalShop is Ownable {
     struct TicketInfo {
         uint256 lastSellPrice;
         uint256 forSalePrice; // 0 means: not for sale.
+        bool used;
     }
 
     mapping(uint256 => TicketInfo) private _ticketInfo;
@@ -33,6 +34,16 @@ contract FestivalShop is Ownable {
     event BalanceWithdrawn(address _by, address _to, uint256 _amount);
     event ShopBalance(uint256 _contractBalance);
 
+    modifier isTicketUsed(uint256 _ticketId) {
+        require((_ticketInfo[_ticketId].used == false),"ticket is used");
+        _;
+    }
+
+    modifier isTicketNotResell(uint256 _ticketId) {
+        require((_ticketInfo[_ticketId].forSalePrice == 0),"ticket is reselling");
+        _;
+    }
+
     function buyTicket() public returns (uint256) {
         return buyTicketFor(msg.sender);
     }
@@ -45,14 +56,17 @@ contract FestivalShop is Ownable {
         uint256 tokenId = _festiTicket.mint(recipient);
         _ticketInfo[tokenId] = TicketInfo({
         lastSellPrice : _origTicketPrice,
-        forSalePrice : 0
+        forSalePrice : 0,
+        used : false
         });
         _tokenIds.push(tokenId);
         return tokenId;
     }
 
     // Offer a ticket for resale fot the requested price. If requestPrice = 0, cancel the existing offer.
-    function offerTicket(uint256 tokenId, uint256 requestedPrice) public {
+    function offerTicket(uint256 tokenId, uint256 requestedPrice) public
+    isTicketUsed(tokenId)
+    {
         require(_ticketInfo[tokenId].lastSellPrice != uint256(0));
         // Cannot sell a ticket for 0. So we check for ticket existence.
         require(_festiTicket.ownerOf(tokenId) == msg.sender);
@@ -99,6 +113,10 @@ contract FestivalShop is Ownable {
         return _ticketInfo[tokenId].forSalePrice;
     }
 
+    function getUsedStatus(uint256 tokenId) external view returns (bool) {
+        return _ticketInfo[tokenId].used;
+    }
+
     function getOwnerAdress() external view returns (uint256) {
         return uint256(withdrawalAddress);
     }
@@ -116,8 +134,10 @@ contract FestivalShop is Ownable {
 
     function useTicket(uint256 _ticketId)
     public
+    onlyOwner
+    isTicketNotResell(_ticketId)
     {
-        _festiTicket.useTicket(_ticketId);
+        _ticketInfo[_ticketId].used = true;
         //emit TicketDestroyed(msg.sender, _ticketId);
     }
 

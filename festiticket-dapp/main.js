@@ -125,7 +125,11 @@ async function getData() {
       } else {
         for (i=0; i< amount; i++) {
           ticket.methods.tokenOfOwnerByIndex(myAccount,i).call().then(function(ticketId) {
-            $("#yourticketinfo").append(function(){ return '<div>Ticket '+ticketId+'</div>'});
+            $("#yourticketinfo").append(function(){ return '<div>Ticket '+ticketId});
+            shop.methods.getUsedStatus(ticketId).call().then(function (used) {
+              console.log("ticket "+ticketId+": "+used);
+              if (used == true) $("#yourticketinfo").append("(used)<div/>");
+            });
           });
         }
       }
@@ -309,14 +313,14 @@ async function withdraw() {
 }
 
 async function use_ticket(recipient) {
-  var tokenId = prompt("Token id to sell:");
+  var tokenId = prompt("Token id to use:");
   console.log("Using ticket "+tokenId+" from account "+myAccount);
 
   const approveTx = {
     from: myAccount,
     to: festiTicketAddress,
     gas: web3.utils.toHex(3000000),
-    data: ticket.methods.useTicket(tokenId).encodeABI()
+    data: shop.methods.useTicket(tokenId).encodeABI()
   };
   web3.eth.sendTransaction(approveTx, async function(err, transactonHash) {
     console.log("Submitted transaction with hash: ", transactonHash);

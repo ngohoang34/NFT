@@ -71,7 +71,7 @@ contract FestiTicket is ERC721, AccessControl {
     public
     isTicketOwner(_ticketId)
     {
-        _burn(_ticketId);
+
         emit TicketDestroyed(msg.sender, _ticketId);
     }
 }
