@@ -33,6 +33,7 @@ contract FestivalShop is Ownable {
 
     event BalanceWithdrawn(address _by, address _to, uint256 _amount);
     event ShopBalance(uint256 _contractBalance);
+    event TicketDestroyed(address _by, uint256 _ticketId);
 
     modifier isTicketUsed(uint256 _ticketId) {
         require((_ticketInfo[_ticketId].used == false),"ticket is used");
@@ -134,11 +135,11 @@ contract FestivalShop is Ownable {
 
     function useTicket(uint256 _ticketId)
     public
-    onlyOwner
     isTicketNotResell(_ticketId)
     {
+        require(_festiTicket.ownerOf(_ticketId) == msg.sender);
         _ticketInfo[_ticketId].used = true;
-        //emit TicketDestroyed(msg.sender, _ticketId);
+        emit TicketDestroyed(msg.sender, _ticketId);
     }
 
 }

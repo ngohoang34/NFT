@@ -125,10 +125,11 @@ async function getData() {
       } else {
         for (i=0; i< amount; i++) {
           ticket.methods.tokenOfOwnerByIndex(myAccount,i).call().then(function(ticketId) {
-            $("#yourticketinfo").append(function(){ return '<div>Ticket '+ticketId});
+            //$("#yourticketinfo").append(function(){ return '<div>Ticket '+ticketId});
             shop.methods.getUsedStatus(ticketId).call().then(function (used) {
               console.log("ticket "+ticketId+": "+used);
-              if (used == true) $("#yourticketinfo").append("(used)<div/>");
+              if (used == true) $("#yourticketinfo").append(function(){ return '<div>Ticket '+ticketId+" (used)<div/>"});
+              else $("#yourticketinfo").append(function(){ return '<div>Ticket '+ticketId+"<div/>"});
             });
           });
         }
@@ -279,12 +280,7 @@ async function withdraw() {
   console.log("Withdrawing");
   var amount;
   VNDT.methods.balanceOf(festivalShopAddress).call().then(function(res) {
-    console.log(myAccount);
-
     amount = web3.utils.toBN(res);
-    console.log("type: "+typeof amount);
-    console.log("type: "+typeof res);
-
     const approveTx = {
       from: myAccount,
       to: festivalShopAddress,
@@ -292,7 +288,6 @@ async function withdraw() {
       data: shop.methods.withdrawBalance().encodeABI()
     };
 
-    console.log("check 1");
     web3.eth.sendTransaction(approveTx, async function(err, transactonHash) {
       console.log("Submitted transaction with hash: ", transactonHash);
       let transactionReceipt = null
@@ -312,13 +307,13 @@ async function withdraw() {
   });
 }
 
-async function use_ticket(recipient) {
+async function use_ticket() {
   var tokenId = prompt("Token id to use:");
   console.log("Using ticket "+tokenId+" from account "+myAccount);
 
   const approveTx = {
     from: myAccount,
-    to: festiTicketAddress,
+    to: festivalShopAddress,
     gas: web3.utils.toHex(3000000),
     data: shop.methods.useTicket(tokenId).encodeABI()
   };
@@ -330,6 +325,11 @@ async function use_ticket(recipient) {
       await sleep(1000);
     }
     console.log("Got the transaction receipt: ", transactionReceipt);
+    shop.methods.getUsedStatus(tokenId).call().then(function (used) {
+      console.log("ticket "+tokenId+": "+used);
+    });
+    getData();
+
     // const buyTx = {
     //   from: myAccount,
     //   to: festivalShopAddress,

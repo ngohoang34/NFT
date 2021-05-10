@@ -2,10 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1da3c26a-8668-413b-a744-50560f7b27f5" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/festiticket-dapp/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/festiticket-dapp/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/festiticket/contracts/FestiTicket.sol" beforeDir="false" afterPath="$PROJECT_DIR$/festiticket/contracts/FestiTicket.sol" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/festiticket/contracts/FestivalShop.sol" beforeDir="false" afterPath="$PROJECT_DIR$/festiticket/contracts/FestivalShop.sol" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/festiticket/test/1_test.js" beforeDir="false" afterPath="$PROJECT_DIR$/festiticket/test/1_test.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,7 +62,7 @@
       <workItem from="1619173439948" duration="6126000" />
       <workItem from="1620099891250" duration="31000" />
       <workItem from="1620099963659" duration="11617000" />
-      <workItem from="1620120470523" duration="44476000" />
+      <workItem from="1620120470523" duration="54377000" />
     </task>
     <servers />
   </component>

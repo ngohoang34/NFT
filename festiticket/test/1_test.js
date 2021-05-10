@@ -128,76 +128,110 @@ contract("FestiTicket", async accounts => {
   //
   // });
 
-  it ("Withdraw", async () => {
-    currencyTokenInstance = await CurrencyToken.deployed();
-    festiTicketInstance = await FestiTicket.deployed();
-    shopInstance = await FestivalShop.deployed();
+  // it ("Withdraw", async () => {
+  //   currencyTokenInstance = await CurrencyToken.deployed();
+  //   festiTicketInstance = await FestiTicket.deployed();
+  //   shopInstance = await FestivalShop.deployed();
+  //
+  //   let shopAddress = shopInstance.address;
+  //
+  //   let owner = web3.utils.toChecksumAddress(accounts[0])
+  //
+  //
+  //   let address1 = web3.utils.toChecksumAddress(accounts[1])
+  //   await currencyTokenInstance.transfer(address1,50000);
+  //   let balance1 = parseInt(await currencyTokenInstance.balanceOf(address1));
+  //   console.log("Balance account1 before test: "+balance1);
+  //
+  //   let address2 = web3.utils.toChecksumAddress(accounts[2])
+  //   await currencyTokenInstance.transfer(address2,30000);
+  //
+  //   let initialShopBalance = parseInt(await currencyTokenInstance.balanceOf(shopAddress));
+  //   console.log("Shop balance before test: "+initialShopBalance);
+  //
+  //   let initialTicketPrice = parseInt(await festiTicketInstance.getOriginalPrice());
+  //   console.log ("Initial ticket price: "+initialTicketPrice);
+  //
+  //   let ownerBalance = parseInt(await currencyTokenInstance.balanceOf(owner));
+  //   console.log("Owner balance before test: "+ownerBalance);
+  //
+  //   console.log("Approving FestivalShop for spending "+initialTicketPrice+" VNDT");
+  //   await currencyTokenInstance.approve(shopInstance.address, initialTicketPrice, {from: accounts[1]});
+  //
+  //   await shopInstance.buyTicket({from: address1});
+  //   assert.equal(1, await festiTicketInstance.getTicketTotal(), "Expected one sold ticket");
+  //   assert.equal(1, await festiTicketInstance.balanceOf(address1), "Expectect 1 ticket in account1 possesion");
+  //
+  //   let newBalance1 = parseInt(await currencyTokenInstance.balanceOf(address1));
+  //   let newShopBalance = parseInt(await currencyTokenInstance.balanceOf(shopAddress));
+  //   console.log("New balance1: "+newBalance1);
+  //   console.log("New shop balance: "+newShopBalance);
+  //   assert.equal(initialShopBalance + initialTicketPrice, newShopBalance, "Expected shop to have received balance for ticket");
+  //   assert.equal(balance1 - initialTicketPrice, newBalance1, "Expected new balance from account1 does not match");
+  //   try {
+  //     await shopInstance.buyTicket({from: address1});
+  //     assert.fail("No purchase allowance given to shop for ticket - should fail.")
+  //   } catch (e) {
+  //   }
+  //   console.log("Approving FestivalShop for spending again "+initialTicketPrice+" VNDT");
+  //   await currencyTokenInstance.approve(shopInstance.address,initialTicketPrice, {from: accounts[1]});
+  //   await shopInstance.buyTicketFor(address2, {from: address1});
+  //   assert.equal(2, await festiTicketInstance.getTicketTotal(), "Expected two sold tickets");
+  //   assert.equal(1, await festiTicketInstance.balanceOf(address1), "Expectect 1 ticket in account1 possesion");
+  //   assert.equal(1, await festiTicketInstance.balanceOf(address2), "Expectect 1 ticket in account2 possesion");
+  //   newBalance1 = parseInt(await currencyTokenInstance.balanceOf(address1));
+  //   newShopBalance = parseInt(await currencyTokenInstance.balanceOf(shopAddress));
+  //   console.log("New balance1: "+newBalance1);
+  //   console.log("New shop balance: "+newShopBalance);
+  //   assert.equal(initialShopBalance + 2 * initialTicketPrice, newShopBalance, "Expected shop to have extra received balance for ticket");
+  //   assert.equal(balance1 - 2 * initialTicketPrice, newBalance1, "Expected new balance from account1 does not match");
+  //
+  //   console.log("Withdrawing shop balance to owner");
+  //   let shopBalance = parseInt(await currencyTokenInstance.balanceOf(shopAddress));
+  //   ownerBalance = parseInt(await currencyTokenInstance.balanceOf(owner));
+  //   console.log("Owner: "+ownerBalance);
+  //   console.log("Shop balance: "+shopBalance);
+  //   await shopInstance.withdrawBalance();
+  //
+  //   newShopBalance = parseInt(await currencyTokenInstance.balanceOf(shopAddress));
+  //   let newOwnerBalance = parseInt(await currencyTokenInstance.balanceOf(owner));
+  //   console.log("New owner: "+newOwnerBalance);
+  //   console.log("New shop balance: "+newShopBalance);
+  //   assert.equal(newShopBalance, 0, "Expected shopBalance = 0");
+  //   assert.equal(newOwnerBalance, ownerBalance + shopBalance, "Expected newOwnerBalance = ownerBalance + shopBalance");
+  // });
 
-    let shopAddress = shopInstance.address;
-
-    let owner = web3.utils.toChecksumAddress(accounts[0])
-
-
-    let address1 = web3.utils.toChecksumAddress(accounts[1])
-    await currencyTokenInstance.transfer(address1,50000);
-    let balance1 = parseInt(await currencyTokenInstance.balanceOf(address1));
-    console.log("Balance account1 before test: "+balance1);
-
-    let address2 = web3.utils.toChecksumAddress(accounts[2])
-    await currencyTokenInstance.transfer(address2,30000);
-
-    let initialShopBalance = parseInt(await currencyTokenInstance.balanceOf(shopAddress));
-    console.log("Shop balance before test: "+initialShopBalance);
-
-    let initialTicketPrice = parseInt(await festiTicketInstance.getOriginalPrice());
-    console.log ("Initial ticket price: "+initialTicketPrice);
-
-    let ownerBalance = parseInt(await currencyTokenInstance.balanceOf(owner));
-    console.log("Owner balance before test: "+ownerBalance);
-
-    console.log("Approving FestivalShop for spending "+initialTicketPrice+" VNDT");
-    await currencyTokenInstance.approve(shopInstance.address, initialTicketPrice, {from: accounts[1]});
-
-    await shopInstance.buyTicket({from: address1});
-    assert.equal(1, await festiTicketInstance.getTicketTotal(), "Expected one sold ticket");
-    assert.equal(1, await festiTicketInstance.balanceOf(address1), "Expectect 1 ticket in account1 possesion");
-
-    let newBalance1 = parseInt(await currencyTokenInstance.balanceOf(address1));
-    let newShopBalance = parseInt(await currencyTokenInstance.balanceOf(shopAddress));
-    console.log("New balance1: "+newBalance1);
-    console.log("New shop balance: "+newShopBalance);
-    assert.equal(initialShopBalance + initialTicketPrice, newShopBalance, "Expected shop to have received balance for ticket");
-    assert.equal(balance1 - initialTicketPrice, newBalance1, "Expected new balance from account1 does not match");
-    try {
-      await shopInstance.buyTicket({from: address1});
-      assert.fail("No purchase allowance given to shop for ticket - should fail.")
-    } catch (e) {
-    }
-    console.log("Approving FestivalShop for spending again "+initialTicketPrice+" VNDT");
-    await currencyTokenInstance.approve(shopInstance.address,initialTicketPrice, {from: accounts[1]});
-    await shopInstance.buyTicketFor(address2, {from: address1});
-    assert.equal(2, await festiTicketInstance.getTicketTotal(), "Expected two sold tickets");
-    assert.equal(1, await festiTicketInstance.balanceOf(address1), "Expectect 1 ticket in account1 possesion");
-    assert.equal(1, await festiTicketInstance.balanceOf(address2), "Expectect 1 ticket in account2 possesion");
-    newBalance1 = parseInt(await currencyTokenInstance.balanceOf(address1));
-    newShopBalance = parseInt(await currencyTokenInstance.balanceOf(shopAddress));
-    console.log("New balance1: "+newBalance1);
-    console.log("New shop balance: "+newShopBalance);
-    assert.equal(initialShopBalance + 2 * initialTicketPrice, newShopBalance, "Expected shop to have extra received balance for ticket");
-    assert.equal(balance1 - 2 * initialTicketPrice, newBalance1, "Expected new balance from account1 does not match");
-
-    console.log("Withdrawing shop balance to owner");
-    let shopBalance = parseInt(await currencyTokenInstance.balanceOf(shopAddress));
-    ownerBalance = parseInt(await currencyTokenInstance.balanceOf(owner));
-    console.log("Owner: "+ownerBalance);
-    console.log("Shop balance: "+shopBalance);
-    await shopInstance.withdrawBalance();
-
-    newShopBalance = parseInt(await currencyTokenInstance.balanceOf(shopAddress));
-    let newOwnerBalance = parseInt(await currencyTokenInstance.balanceOf(owner));
-    console.log("New owner: "+newOwnerBalance);
-    console.log("New shop balance: "+newShopBalance);
-    assert.equal(newShopBalance, 0, "Expected shopBalance = 0");
-    assert.equal(newOwnerBalance, ownerBalance + shopBalance, "Expected newOwnerBalance = ownerBalance + shopBalance");
-  });
+  // it ("Use ticket", async () => {
+  //   currencyTokenInstance = await CurrencyToken.deployed();
+  //   festiTicketInstance = await FestiTicket.deployed();
+  //   shopInstance = await FestivalShop.deployed();
+  //
+  //
+  //   let address1 = web3.utils.toChecksumAddress(accounts[1])
+  //   await currencyTokenInstance.transfer(address1,50000);
+  //
+  //   let initialTicketPrice = parseInt(await festiTicketInstance.getOriginalPrice());
+  //
+  //   console.log("Approving FestivalShop for spending "+initialTicketPrice+" VNDT");
+  //   await currencyTokenInstance.approve(shopInstance.address, initialTicketPrice, {from: accounts[1]});
+  //
+  //   await shopInstance.buyTicket({from: address1});
+  //
+  //   try {
+  //     await shopInstance.buyTicket({from: address1});
+  //     assert.fail("No purchase allowance given to shop for ticket - should fail.")
+  //   } catch (e) {
+  //   }
+  //   console.log("Approving FestivalShop for spending again "+initialTicketPrice+" VNDT");
+  //   await currencyTokenInstance.approve(shopInstance.address,initialTicketPrice, {from: accounts[1]});
+  //
+  //   let status = await shopInstance.getUsedStatus(0);
+  //   console.log(status);
+  //
+  //   await shopInstance.useTicket(0);
+  //   let used = await shopInstance.getUsedStatus(0);
+  //   console.log(used);
+  //   assert.equal(used, true, "Failed to use ticket");
+  //
+  // });
 });
