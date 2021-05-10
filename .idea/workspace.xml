@@ -2,11 +2,54 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1da3c26a-8668-413b-a744-50560f7b27f5" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/festiticket-dapp/CHANGELOG.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/festiticket-dapp/dist/css/style.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/festiticket-dapp/dist/images/cta-illustration.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/festiticket-dapp/dist/images/feature-icon-01.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/festiticket-dapp/dist/images/feature-icon-02.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/festiticket-dapp/dist/images/feature-icon-03.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/festiticket-dapp/dist/images/feature-icon-04.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/festiticket-dapp/dist/images/feature-icon-05.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/festiticket-dapp/dist/images/feature-icon-06.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/festiticket-dapp/dist/images/hero-back-illustration.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/festiticket-dapp/dist/images/hero-top-illustration.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/festiticket-dapp/dist/images/logo.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/festiticket-dapp/dist/images/pricing-illustration.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/festiticket-dapp/dist/js/main.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/festiticket-dapp/index (copy).html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/festiticket-dapp/src/images/cta-illustration.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/festiticket-dapp/src/images/feature-icon-01.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/festiticket-dapp/src/images/feature-icon-02.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/festiticket-dapp/src/images/feature-icon-03.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/festiticket-dapp/src/images/feature-icon-04.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/festiticket-dapp/src/images/feature-icon-05.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/festiticket-dapp/src/images/feature-icon-06.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/festiticket-dapp/src/images/hero-back-illustration.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/festiticket-dapp/src/images/hero-top-illustration.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/festiticket-dapp/src/images/logo.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/festiticket-dapp/src/images/pricing-illustration.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/festiticket-dapp/src/js/main.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/festiticket-dapp/src/scss/_normalize.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/festiticket-dapp/src/scss/abstracts/_functions.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/festiticket-dapp/src/scss/abstracts/_include-media.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/festiticket-dapp/src/scss/abstracts/_mixins.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/festiticket-dapp/src/scss/abstracts/_variables.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/festiticket-dapp/src/scss/base/_base.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/festiticket-dapp/src/scss/base/_helpers.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/festiticket-dapp/src/scss/base/_typography.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/festiticket-dapp/src/scss/components/_buttons.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/festiticket-dapp/src/scss/components/_forms.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/festiticket-dapp/src/scss/layout/_cta.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/festiticket-dapp/src/scss/layout/_features.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/festiticket-dapp/src/scss/layout/_footer.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/festiticket-dapp/src/scss/layout/_header.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/festiticket-dapp/src/scss/layout/_hero.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/festiticket-dapp/src/scss/layout/_main.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/festiticket-dapp/src/scss/layout/_pricing.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/festiticket-dapp/src/scss/style.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/festiticket-dapp/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/festiticket-dapp/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/festiticket-dapp/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/festiticket-dapp/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/festiticket/contracts/FestivalShop.sol" beforeDir="false" afterPath="$PROJECT_DIR$/festiticket/contracts/FestivalShop.sol" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/festiticket/test/1_test.js" beforeDir="false" afterPath="$PROJECT_DIR$/festiticket/test/1_test.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,7 +105,8 @@
       <workItem from="1619173439948" duration="6126000" />
       <workItem from="1620099891250" duration="31000" />
       <workItem from="1620099963659" duration="11617000" />
-      <workItem from="1620120470523" duration="54377000" />
+      <workItem from="1620120470523" duration="56456000" />
+      <workItem from="1620633932532" duration="13473000" />
     </task>
     <servers />
   </component>
@@ -79,6 +123,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />

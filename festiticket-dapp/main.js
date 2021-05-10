@@ -54,7 +54,7 @@ function fetchAccountAndData() {
   });
 }
 function prettyBalance(arg) {
-  return (parseInt(arg) /  (10**VNDTDecimals) ).toFixed(VNDTDecimals) + " VNDT";
+  return ((parseInt(arg) /  (10**VNDTDecimals) ).toFixed(VNDTDecimals)).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
 async function getData() {
   console.log("Getting balance of shop "+festivalShopAddress);
@@ -65,6 +65,8 @@ async function getData() {
     console.log("Current contract balance: "+amount);
     $("#shopBalance").text(amount);
   });
+  let myPerttyAccount = myAccount.toString().slice(0,6)+"..."+myAccount.toString().slice(-4);
+  $("#my-account").text(myPerttyAccount);
   console.log("Getting balance of my account "+myAccount);
   VNDT.methods.balanceOf(myAccount).call().then(function(res) {
     console.log(res);
@@ -100,11 +102,16 @@ async function getData() {
       });
       shop.methods.getForSalePrice(ticketId).call().then(function(price) {
         resaleTicketInfoCount++;
+        if (price <= 0) return true;
         var t="Ticket "+ticketId+" "+(price>0?" is for sale for "+prettyBalance(price):" is not for resale");
+        var ticket="<th>Ticket "+ticketId+"</th>"+"<th>"+prettyBalance(price)+" VNDT</th>";
         shop.methods.getLastSellPrice(ticketId).call().then(function(sellPrice) {
+          console.log(ticketId);
           t=t+(". Last sold for "+prettyBalance(sellPrice));
+          ticket=ticket+"<th>"+prettyBalance(sellPrice)+" VNDT</th>"+"<th><button type=\"button\" id=\"buy_button\" class=\"btn btn-primary\" onclick='buy_offered("+ticketId+")'>Buy this ticket</button></th>";
           console.log(t);
           $("#forsaleinfo").append(function(){ return '<div>'+t+'</div>'});
+          $("#secondary-ticket").append(function(){ return '<tr>'+ticket+'</tr>'});
         });
       });
     });
@@ -229,11 +236,11 @@ async function buy_offered_for() {
   recipient = prompt("Address of person you are buying this ticket for:")
   buy_offered_common(recipient);
 }
-async function buy_offered() {
-  buy_offered_common(myAccount);
+async function buy_offered(tokenId) {
+  buy_offered_common(myAccount, tokenId);
 }
-async function buy_offered_common(recipient) {
-  var tokenId = prompt("Ticket id to buy:");
+async function buy_offered_common(recipient, tokenId) {
+  //var tokenId = prompt("Ticket id to buy:");
 
   shop.methods.getForSalePrice(tokenId).call().then(function(price) {
     if (price == 0) {
