@@ -1,6 +1,8 @@
-FROM node:10
+FROM node:12
 
 RUN /bin/sh -c "apt-get update && apt-get -y install jq"
+
+RUN npm outdated --depth=3
 
 # Install Truffle
 RUN npm install -g truffle

@@ -3,6 +3,7 @@ var shop, VNDT, ticket;
 var myAccount, adminAccount;
 var origTicketPrice;
 var VNDTDecimals;
+var myTickets = [];
 
 $(document).ready(function() {
     window.ethereum.enable().then(function(accounts){
@@ -135,15 +136,27 @@ async function getData() {
             //$("#yourticketinfo").append(function(){ return '<div>Ticket '+ticketId});
             shop.methods.getUsedStatus(ticketId).call().then(function (used) {
               console.log("ticket "+ticketId+": "+used);
-              if (used == true) $("#yourticketinfo").append(function(){ return '<div>Ticket '+ticketId+" (used)<div/>"});
-              else $("#yourticketinfo").append(function(){ return '<div>Ticket '+ticketId+"<div/>"});
+              myTickets.push({
+                ticketId: ticketId,
+                ticketPrice: origTicketPrice,
+                ticketUsed: used
+              })
+              if (used == true) {
+                $("#yourticketinfo").append(function(){ return '<div>Ticket '+ticketId+" (used)<div/>"});
+              }
+              else {
+                $("#yourticketinfo").append(function(){ return '<div>Ticket '+ticketId+"<div/>"});
+              }
             });
           });
         }
       }
   });
-
-
+  console.log(typeof myTickets);
+  console.log(typeof myTickets[0].ticketId);
+  console.log(typeof myTickets[0].ticketPrice);
+  $("#ticketId").text(myTickets[0].ticketId);
+  $("#ticket-price").text(myTickets[0].ticketPrice);
 }
 function sleep (time) {
   return new Promise((resolve) => setTimeout(resolve, time));
