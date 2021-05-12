@@ -37,6 +37,20 @@
         justify-content: space-evenly;
         padding-top: 10px;
     }
+    .next:hover {
+        color: #1e86f8;
+        cursor: pointer;
+    }
+    .next {
+        text-decoration: auto;
+    }
+    .prev:hover {
+        color: #1e86f8;
+        cursor: pointer;
+    }
+    .prev {
+        text-decoration: auto;
+    }
 </style>
 <body class="is-boxed has-animations">
 <div class="body-wrap">
@@ -45,21 +59,52 @@
             <div class="site-header-inner">
                 <div class="brand header-brand">
                     <h1 class="m-0">
-                        <a href="#">
+                        <a href="index.html">
                             <img class="header-logo-image" src="dist/images/logo.svg" alt="Logo">
                         </a>
                     </h1>
                 </div>
                 <div class="account-info" style="display: flex; align-items: center; z-index: 1;">
-                    <div class="account" id="my-account" style="padding-right: 10px;color: white;"></div>
-                    <a class="button button-primary" href="index.html">Buy ticket</a>
+                    <div>
+                        <div class="account" id="my-account" style="padding-right: 10px;color: white; font-size: 15px;"></div>
+                        <div class="balance" id="my-balance" style="padding-right: 10px;color: white;"></div>
+                    </div>
+                    <a class="button button-primary" href="index.html" style="padding-top: 18px; height: 52px; padding-bottom: 18px;">Buy ticket</a>
                 </div>
             </div>
         </div>
     </header>
 
     <main>
-        <section class="my-ticket section" id="primary-market">
+        <section class="account-hero">
+            <div class="container">
+                <div class="hero-inner">
+                    <div class="hero-copy">
+                        <h1 class="hero-title mt-0">You haven't bought tickets yet</h1>
+                        <p class="hero-paragraph">Festival Tickets as NFT with secondary market being monetized by the
+                            organisor and VNDT stablecoin purchases. Ethereum test network.</p>
+                        <div class="hero-cta"><a class="button button-primary" href="index.html#primary-market">Buy now</a><a
+                                class="button" href="index.html#secondary-market">Secondary market</a></div>
+                    </div>
+                    <div class="hero-figure anime-element">
+                        <svg class="placeholder" width="528" height="396" viewBox="0 0 528 396">
+                            <rect width="528" height="396" style="fill:transparent;"/>
+                        </svg>
+                        <div class="hero-figure-box hero-figure-box-01" data-rotation="45deg"></div>
+                        <div class="hero-figure-box hero-figure-box-02" data-rotation="-45deg"></div>
+                        <div class="hero-figure-box hero-figure-box-03" data-rotation="0deg"></div>
+                        <div class="hero-figure-box hero-figure-box-04" data-rotation="-135deg"></div>
+                        <div class="hero-figure-box hero-figure-box-05"></div>
+                        <div class="hero-figure-box hero-figure-box-06"></div>
+                        <div class="hero-figure-box hero-figure-box-07"></div>
+                        <div class="hero-figure-box hero-figure-box-08" data-rotation="-22deg"></div>
+                        <div class="hero-figure-box hero-figure-box-09" data-rotation="-52deg"></div>
+                        <div class="hero-figure-box hero-figure-box-10" data-rotation="-50deg"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="my-ticket section" id="my-ticket-info">
             <div class="container-sm">
                 <div class="pricing-inner section-inner">
                     <div class="pricing-header text-center">
@@ -73,17 +118,17 @@
                                         <div class="pricing-table-price"><span class="pricing-table-price-amount h1">Ticket No. </span><div class="pricing-table-price-amount h1" id="ticketId" style="display: inline">1</div></div>
                                     </div>
                                     <div class="pricing-table-features-title text-xs pt-24 pb-24" style="display: flex; justify-content: space-between;">
-                                        <div>Time: </div>
+                                        <div style="color: #7b8495;">Time: </div>
                                         <div id="ticket-time"  style="display: inline; font-size: 30px;">14:30</div>
                                         <div></div>
                                     </div>
                                     <div class="pricing-table-features-title text-xs pt-24 pb-24" style="display: flex; justify-content: space-between;">
-                                        <div>Date: </div>
+                                        <div style="color: #7b8495;">Date: </div>
                                         <div id="ticket-date" style="display: inline; font-size: 30px;">05/05/2021</div>
                                         <div></div>
                                     </div>
                                     <div class="pricing-table-features-title text-xs pt-24 pb-24" style="display: flex; justify-content: space-between;">
-                                        <div>Price: </div>
+                                        <div style="color: #7b8495;">Price: </div>
                                         <div id="ticket-price" style="display: inline; font-size: 30px;">10,000 VNDT</div>
                                         <div></div>
                                     </div>
@@ -91,14 +136,20 @@
                                 <div class="pricing-table-cta mb-8">
                                     <a class="button button-primary button-shadow button-block" id="use_button">Use ticket</a>
                                 </div>
+                                <div class="pricing-table-price-amount h1" id="used" style="height: 32px; text-align: center; margin-bottom: 32px;margin-top: 32px; color: #7b8495;">USED!</div>
+                                <div class="pricing-table-price-amount h1" id="reselling" style="height: 32px; text-align: center; margin-bottom: 32px;margin-top: 32px; color: #7b8495;">Reselling..</div>
                                 <div class="pricing-table-cta mb-8">
                                     <a class="button button-primary button-shadow button-block" id="offer_button" style="background: #4b5664;">Resell ticket</a>
                                 </div>
                             </div>
                             <div class="navi-container">
-                                <a class="prev">&#10094;</a>
-                                <div class="number">1/10</div>
-                                <a class="next">&#10095;</a>
+                                <a class="prev" id="prev">&#10094;</a>
+                                <div class="number" style="display: flex;">
+                                    <div id="current">?</div>
+                                    <div>/</div>
+                                    <div id="total">?</div>
+                                </div>
+                                <a class="next" id="next">&#10095;</a>
                             </div>
                         </div>
                     </div>
@@ -106,7 +157,7 @@
             </div>
         </section>
 
-        <section class="secondary section" id="secondary-market">
+        <section class="secondary section" id="my-offering">
             <div class="container-sm">
                 <div class="pricing-inner section-inner">
                     <div class="pricing-header text-center">
@@ -118,7 +169,7 @@
                     <!--                                    <div class="pricing-table-main">-->
                     <!--                                        <div class="pricing-table-header pb-24">-->
                     <!--                                        </div>-->
-                    <table class="pricing-table-inner" id="secondary-ticket">
+                    <table class="pricing-table-inner" id="my-offering-ticket">
                         <tr>
                             <th>Ticket</th>
                             <th>Price</th>

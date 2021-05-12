@@ -1,4 +1,4 @@
-FROM node:12
+FROM node:10
 
 RUN /bin/sh -c "apt-get update && apt-get -y install jq"
 

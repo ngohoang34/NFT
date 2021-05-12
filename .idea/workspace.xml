@@ -2,8 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1da3c26a-8668-413b-a744-50560f7b27f5" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/festiticket-dapp/account.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/festiticket-dapp/admin.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/festiticket-dapp/account.html" beforeDir="false" afterPath="$PROJECT_DIR$/festiticket-dapp/account.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/festiticket-dapp/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/festiticket-dapp/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/festiticket-dapp/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/festiticket-dapp/main.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/festiticket/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/festiticket/Dockerfile" afterDir="false" />
@@ -72,7 +73,7 @@
       <workItem from="1620716933998" duration="3607000" />
       <workItem from="1620720648633" duration="1428000" />
       <workItem from="1620725114232" duration="1718000" />
-      <workItem from="1620727914132" duration="3975000" />
+      <workItem from="1620727914132" duration="25207000" />
     </task>
     <servers />
   </component>
