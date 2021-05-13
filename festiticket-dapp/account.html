@@ -51,6 +51,15 @@
     .prev {
         text-decoration: auto;
     }
+    .pricing-table-inner::before {
+        z-index: -1;
+    }
+    .cancel {
+    background: linear-gradient(65deg, #861313 0, #981515 100%);
+    }
+    .cancel:hover {
+        background: #981515;
+    }
 </style>
 <body class="is-boxed has-animations">
 <div class="body-wrap">
@@ -112,7 +121,7 @@
                     </div>
                     <div class="pricing-tables-wrap">
                         <div class="pricing-table">
-                            <div class="pricing-table-inner is-revealing show-ticket">
+                            <div class="pricing-table-inner is-revealing show-ticket" style="display: flex;">
                                 <div class="pricing-table-main">
                                     <div class="pricing-table-header pb-24">
                                         <div class="pricing-table-price"><span class="pricing-table-price-amount h1">Ticket No. </span><div class="pricing-table-price-amount h1" id="ticketId" style="display: inline">1</div></div>
@@ -159,41 +168,19 @@
 
         <section class="secondary section" id="my-offering">
             <div class="container-sm">
-                <div class="pricing-inner section-inner">
-                    <div class="pricing-header text-center">
+                <div class="pricing-inner section-inner" id="my-offering">
+                    <div class="pricing-header text-center offering">
                         <h2 class="section-title mt-0">My offering tickets</h2>
                     </div>
-                    <!--                        <div class="pricing-tables-wrap secondary-market-table">-->
-                    <!--                            <div class="pricing-table secondary-market-table">-->
-                    <!--                                <div class="pricing-table-inner is-revealing">-->
-                    <!--                                    <div class="pricing-table-main">-->
-                    <!--                                        <div class="pricing-table-header pb-24">-->
-                    <!--                                        </div>-->
-                    <table class="pricing-table-inner" id="my-offering-ticket">
+
+                    <table class="pricing-table-inner offering" id="my-offering-ticket">
                         <tr>
                             <th>Ticket</th>
                             <th>Price</th>
                             <th>Last sold for</th>
                             <th></th>
                         </tr>
-                        <!--                                            <tr id="secondary-ticket"></tr>-->
                     </table>
-                    <!--                                        <div class="pricing-table-features-title text-xs pt-24 pb-24">What you will get</div>-->
-                    <!--                                        <ul class="pricing-table-features list-reset text-xs">-->
-                    <!--                                            <li>-->
-                    <!--                                                <span>A NFT ticket</span>-->
-                    <!--                                            </li>-->
-                    <!--                                            <li>-->
-                    <!--                                                <span>Permission to resell ticket</span>-->
-                    <!--                                            </li>-->
-                    <!--                                        </ul>-->
-                    <!--                                    </div>-->
-                    <!--                                    <div class="pricing-table-cta mb-8">-->
-                    <!--                                        <a class="button button-primary button-shadow button-block" id="buy_button">Buy now</a>-->
-                    <!--                                    </div>-->
-                    <!--                                </div>-->
-                    <!--                            </div>-->
-                    <!--                        </div>-->
                 </div>
             </div>
         </section>
@@ -203,7 +190,7 @@
                 <div class="cta-inner section-inner">
                     <h3 class="section-title mt-0">Still not convinced on buying?</h3>
                     <div class="cta-cta">
-                        <a class="button button-primary button-wide-mobile" href="#">Get in touch</a>
+                        <a class="button button-primary button-wide-mobile" href="http://fb.com/ngohoang34">Get in touch</a>
                     </div>
                 </div>
             </div>
@@ -261,7 +248,7 @@
                         </a>
                     </li>
                 </ul>
-                <div class="footer-copyright">&copy; 2019 Solid, all rights reserved</div>
+                <div class="footer-copyright">&copy; 2021 Ngohoang34, all rights reserved</div>
             </div>
         </div>
     </footer>

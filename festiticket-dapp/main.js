@@ -138,12 +138,24 @@ async function getData() {
                         return '<div>' + t + '</div>'
                     });
                     $("#secondary-ticket").append(function () {
-                        _ticket = _ticket + "<th><button type=\"button\" id=\"buy_button\" class=\"btn btn-primary\" onclick='buy_offered(" + ticketId + ")'>Buy this ticket</button></th>";
+                        _ticket = _ticket + "<th><button type=\"button\" id=\"buy_button\" class=\"btn btn-primary button button-primary\" style=\"\n" +
+                            "    padding-right: 10px;" +
+                            "    padding-left: 10px;" +
+                            "    padding-top: 10px;" +
+                            "    padding-bottom: 10px;" +
+                            "    height: 36px;" +
+                            "\" onclick='buy_offered(" + ticketId + ")'>Buy this ticket</button></th>";
                         return '<tr>' + _ticket + '</tr>'
                     });
                     ticket.methods.ownerOf(ticketId).call().then(function (owner) {
                         if (owner == myAccount){
-                            _ticket = _ticket + "<th><button type=\"button\" id=\"buy_button\" class=\"btn btn-primary\" onclick='buy_offered(" + ticketId + ")'>Cancel this offer</button></th>";
+                            _ticket = _ticket + "<th><button type=\"button\" id=\"cancel_button\" class=\"btn btn-primary button button-primary cancel\" style=\"\n" +
+                                "    padding-right: 10px;" +
+                                "    padding-left: 10px;" +
+                                "    padding-top: 10px;" +
+                                "    padding-bottom: 10px;" +
+                                "    height: 36px;" +
+                                "\" onclick='buy_offered(" + ticketId + ")'>Cancel this offer</button></th>";
                             $("#my-offering-ticket").append(function () {
                                 return '<tr>' + _ticket + '</tr>'
                             });
@@ -266,27 +278,20 @@ async function buy_common(recipient) {
         console.log("Eth balance: " + balance);
     });
 
-    const approveTx = {
-        from: myAccount,
-        to: currencyTokenAddress,
-        gas: web3.utils.toHex(3000000),
-        data: VNDT.methods.approve(festivalShopAddress, origTicketPrice).encodeABI()
-    };
-    web3.eth.sendTransaction(approveTx, async function (err, transactonHash) {
-        console.log("Submitted transaction with hash: ", transactonHash);
-        let transactionReceipt = null
-        while (transactionReceipt == null) { // Waiting expectedBlockTime until the transaction is mined
-            transactionReceipt = await web3.eth.getTransactionReceipt(transactonHash);
-            await sleep(1000);
+    VNDT.methods.balanceOf(myAccount).call().then(function (res) {
+        console.log(typeof res);
+        console.log(res < origTicketPrice)
+        if (res < origTicketPrice) {
+            alert("Not enough balance!");
+            return;
         }
-        console.log("Got the transaction receipt: ", transactionReceipt);
-        const buyTx = {
+        const approveTx = {
             from: myAccount,
-            to: festivalShopAddress,
+            to: currencyTokenAddress,
             gas: web3.utils.toHex(3000000),
-            data: shop.methods.buyTicketFor(recipient).encodeABI()
-        }
-        web3.eth.sendTransaction(buyTx, async function (err, transactonHash) {
+            data: VNDT.methods.approve(festivalShopAddress, origTicketPrice).encodeABI()
+        };
+        web3.eth.sendTransaction(approveTx, async function (err, transactonHash) {
             console.log("Submitted transaction with hash: ", transactonHash);
             let transactionReceipt = null
             while (transactionReceipt == null) { // Waiting expectedBlockTime until the transaction is mined
@@ -294,7 +299,23 @@ async function buy_common(recipient) {
                 await sleep(1000);
             }
             console.log("Got the transaction receipt: ", transactionReceipt);
-            getData();
+            const buyTx = {
+                from: myAccount,
+                to: festivalShopAddress,
+                gas: web3.utils.toHex(3000000),
+                data: shop.methods.buyTicketFor(recipient).encodeABI()
+            }
+            web3.eth.sendTransaction(buyTx, async function (err, transactonHash) {
+                console.log("Submitted transaction with hash: ", transactonHash);
+                let transactionReceipt = null
+                while (transactionReceipt == null) { // Waiting expectedBlockTime until the transaction is mined
+                    transactionReceipt = await web3.eth.getTransactionReceipt(transactonHash);
+                    await sleep(1000);
+                }
+                console.log("Got the transaction receipt: ", transactionReceipt);
+                getData();
+                location.replace("account.html");
+            });
         });
     });
 }
@@ -303,6 +324,14 @@ async function offer() {
     var tokenId = myTickets[currentTicket].ticketId;
     var price = (10 ** VNDTDecimals) * prompt("Price to sell for:");
     console.log("Offering ticket " + tokenId + " from account " + myAccount + " for a price of " + prettyBalance(price));
+    if (price > origTicketPrice * 1.1) {
+        alert("Price must be less than 110% of original ticket price!");
+        return;
+    }
+    if (price <= 0) {
+        alert("Price must be greater than 0");
+        return;
+    }
 
     const approveTx = {
         from: myAccount,
@@ -355,27 +384,20 @@ async function buy_offered_common(recipient, tokenId) {
             return;
         }
         console.log("Ticket " + tokenId + " was for sale for " + prettyBalance(price));
-        const approveTx = {
-            from: myAccount,
-            to: currencyTokenAddress,
-            gas: web3.utils.toHex(3000000),
-            data: VNDT.methods.approve(festivalShopAddress, price).encodeABI()
-        };
-        web3.eth.sendTransaction(approveTx, async function (err, transactonHash) {
-            console.log("Submitted transaction with hash: ", transactonHash);
-            let transactionReceipt = null
-            while (transactionReceipt == null) { // Waiting expectedBlockTime until the transaction is mined
-                transactionReceipt = await web3.eth.getTransactionReceipt(transactonHash);
-                await sleep(1000);
+        VNDT.methods.balanceOf(myAccount).call().then(function (res) {
+            console.log(typeof res);
+            console.log(res < origTicketPrice)
+            if (res < origTicketPrice) {
+                alert("Not enough balance!");
+                return;
             }
-            console.log("Got the transaction receipt: ", transactionReceipt);
-            const buyTx = {
+            const approveTx = {
                 from: myAccount,
-                to: festivalShopAddress,
+                to: currencyTokenAddress,
                 gas: web3.utils.toHex(3000000),
-                data: shop.methods.buyOfferedTicketFor(tokenId, recipient).encodeABI()
-            }
-            web3.eth.sendTransaction(buyTx, async function (err, transactonHash) {
+                data: VNDT.methods.approve(festivalShopAddress, price).encodeABI()
+            };
+            web3.eth.sendTransaction(approveTx, async function (err, transactonHash) {
                 console.log("Submitted transaction with hash: ", transactonHash);
                 let transactionReceipt = null
                 while (transactionReceipt == null) { // Waiting expectedBlockTime until the transaction is mined
@@ -383,10 +405,25 @@ async function buy_offered_common(recipient, tokenId) {
                     await sleep(1000);
                 }
                 console.log("Got the transaction receipt: ", transactionReceipt);
-                getData();
+                const buyTx = {
+                    from: myAccount,
+                    to: festivalShopAddress,
+                    gas: web3.utils.toHex(3000000),
+                    data: shop.methods.buyOfferedTicketFor(tokenId, recipient).encodeABI()
+                }
+                web3.eth.sendTransaction(buyTx, async function (err, transactonHash) {
+                    console.log("Submitted transaction with hash: ", transactonHash);
+                    let transactionReceipt = null
+                    while (transactionReceipt == null) { // Waiting expectedBlockTime until the transaction is mined
+                        transactionReceipt = await web3.eth.getTransactionReceipt(transactonHash);
+                        await sleep(1000);
+                    }
+                    console.log("Got the transaction receipt: ", transactionReceipt);
+                    getData();
+                    location.replace("account.html");
+                });
             });
         });
-
     });
 }
 
