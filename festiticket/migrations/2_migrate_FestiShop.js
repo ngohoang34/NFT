@@ -3,7 +3,7 @@ const CurrencyToken = artifacts.require("CurrencyToken");
 const FestiTicket = artifacts.require("FestiTicket");
 var currencyTokenInstance, festiTicketInstance, shopInstance;
 const InitialTicketPrice = 10000; //10000 VNDT initial price
-const MaxTicketCount = 1000;
+const MaxTicketCount = 3;
 
 module.exports = async function(deployer, network, accounts) {
   await deployer.deploy(CurrencyToken);

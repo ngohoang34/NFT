@@ -97,7 +97,6 @@ async function getData() {
     shop.methods.getTicketsSold().call().then(function (ticketIds) {
         console.log("Tickets sold:" + JSON.stringify(ticketIds));
         $("#ticketCount").text(ticketIds.length);
-
         $("#my-offering-ticket").empty();
         $("#my-offering-ticket").append("<tr>\n" +
             "                            <th>Ticket</th>\n" +
@@ -285,27 +284,19 @@ async function buy_common(recipient) {
             alert("Not enough balance!");
             return;
         }
-        const approveTx = {
-            from: myAccount,
-            to: currencyTokenAddress,
-            gas: web3.utils.toHex(3000000),
-            data: VNDT.methods.approve(festivalShopAddress, origTicketPrice).encodeABI()
-        };
-        web3.eth.sendTransaction(approveTx, async function (err, transactonHash) {
-            console.log("Submitted transaction with hash: ", transactonHash);
-            let transactionReceipt = null
-            while (transactionReceipt == null) { // Waiting expectedBlockTime until the transaction is mined
-                transactionReceipt = await web3.eth.getTransactionReceipt(transactonHash);
-                await sleep(1000);
+        ticket.methods.ticketsAvailable().call().then(function (available) {
+            console.log("available: "+available);
+            if (!available) {
+                alert("Sold out!");
+                return;
             }
-            console.log("Got the transaction receipt: ", transactionReceipt);
-            const buyTx = {
+            const approveTx = {
                 from: myAccount,
-                to: festivalShopAddress,
+                to: currencyTokenAddress,
                 gas: web3.utils.toHex(3000000),
-                data: shop.methods.buyTicketFor(recipient).encodeABI()
-            }
-            web3.eth.sendTransaction(buyTx, async function (err, transactonHash) {
+                data: VNDT.methods.approve(festivalShopAddress, origTicketPrice).encodeABI()
+            };
+            web3.eth.sendTransaction(approveTx, async function (err, transactonHash) {
                 console.log("Submitted transaction with hash: ", transactonHash);
                 let transactionReceipt = null
                 while (transactionReceipt == null) { // Waiting expectedBlockTime until the transaction is mined
@@ -313,8 +304,23 @@ async function buy_common(recipient) {
                     await sleep(1000);
                 }
                 console.log("Got the transaction receipt: ", transactionReceipt);
-                getData();
-                location.replace("account.html");
+                const buyTx = {
+                    from: myAccount,
+                    to: festivalShopAddress,
+                    gas: web3.utils.toHex(3000000),
+                    data: shop.methods.buyTicketFor(recipient).encodeABI()
+                }
+                web3.eth.sendTransaction(buyTx, async function (err, transactonHash) {
+                    console.log("Submitted transaction with hash: ", transactonHash);
+                    let transactionReceipt = null
+                    while (transactionReceipt == null) { // Waiting expectedBlockTime until the transaction is mined
+                        transactionReceipt = await web3.eth.getTransactionReceipt(transactonHash);
+                        await sleep(1000);
+                    }
+                    console.log("Got the transaction receipt: ", transactionReceipt);
+                    getData();
+                    location.replace("account.html");
+                });
             });
         });
     });

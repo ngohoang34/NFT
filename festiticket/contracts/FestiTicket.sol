@@ -44,7 +44,7 @@ contract FestiTicket is ERC721, AccessControl {
 
     function mint(address to) public virtual returns (uint256){
       require(hasRole(MINTER_ROLE, _msgSender()), "Tickets can only be minted by whoever has the MINTER_ROLE");
-      require(_tokenIdTracker.current() < _maxAmount);
+      require(_tokenIdTracker.current() < _maxAmount, "Sold out!");
       uint256 tokenId = _tokenIdTracker.current();
       _mint(to, tokenId);
       _tokenIdTracker.increment();
@@ -64,7 +64,7 @@ contract FestiTicket is ERC721, AccessControl {
     }
 
     function ticketsAvailable() external view returns (bool) {
-      return _tokenIdTracker.current() <= _maxAmount;
+      return _tokenIdTracker.current() < _maxAmount;
     }
 
     function useTicket(uint256 _ticketId)
