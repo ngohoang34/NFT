@@ -2,13 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1da3c26a-8668-413b-a744-50560f7b27f5" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/festiticket-dapp/dashboard.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/festiticket-dapp/account.html" beforeDir="false" afterPath="$PROJECT_DIR$/festiticket-dapp/account.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/festiticket-dapp/admin.html" beforeDir="false" afterPath="$PROJECT_DIR$/festiticket-dapp/admin.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/festiticket-dapp/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/festiticket-dapp/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/festiticket-dapp/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/festiticket-dapp/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/Readme.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/festiticket/contracts/CurrencyToken.sol" beforeDir="false" afterPath="$PROJECT_DIR$/festiticket/contracts/CurrencyToken.sol" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/festiticket/contracts/FestiTicket.sol" beforeDir="false" afterPath="$PROJECT_DIR$/festiticket/contracts/FestiTicket.sol" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/festiticket/contracts/FestivalShop.sol" beforeDir="false" afterPath="$PROJECT_DIR$/festiticket/contracts/FestivalShop.sol" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/festiticket/migrations/2_migrate_FestiShop.js" beforeDir="false" afterPath="$PROJECT_DIR$/festiticket/migrations/2_migrate_FestiShop.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -77,7 +76,8 @@
       <workItem from="1620725114232" duration="1718000" />
       <workItem from="1620727914132" duration="31058000" />
       <workItem from="1620893364874" duration="7261000" />
-      <workItem from="1621251961104" duration="2309000" />
+      <workItem from="1621251961104" duration="10455000" />
+      <workItem from="1621406375005" duration="4969000" />
     </task>
     <servers />
   </component>

@@ -36,12 +36,12 @@ contract FestivalShop is Ownable {
     event TicketDestroyed(address _by, uint256 _ticketId);
 
     modifier isTicketUsed(uint256 _ticketId) {
-        require((_ticketInfo[_ticketId].used == false),"ticket is used");
+        require((_ticketInfo[_ticketId].used == false), "ticket is used");
         _;
     }
 
     modifier isTicketNotResell(uint256 _ticketId) {
-        require((_ticketInfo[_ticketId].forSalePrice == 0),"ticket is reselling");
+        require((_ticketInfo[_ticketId].forSalePrice == 0), "ticket is reselling");
         _;
     }
 

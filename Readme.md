@@ -17,14 +17,11 @@ There are three Smart contracts, FestivalShop represents the shop. Then there is
 * There is an ERC20 token called VNDT (2 decimals) which represents the currency token.
 * There is an ERC721 (NFT) token FestiTicket which represent festival tickets.
 * I use openzeppelin as the base layer for the tokens and Access Control.
-* FestivalTickets can only be sold by entities having the TRANSFER_ROLE, which is only the shop. This is to prevent circumventing the secondary market of FestivalShop.
 * The FestivalShop takes a 1% commission on a all resales.
 * Bought tickets can be offered for resale to the secondary market of the shop for a requested price.
 * When tickets are for sale they can be bought by anyone.
 
 Limitations/Good to know:
-* Basic UI to demonstrate the functioning smart contracts. No layouting, ugly popups,...
-* Not many error conditions have been implemented in UI.
 * Fixed 3 accounts in Ganache to preventing reimporting in Metamask. See docker-compose.yaml to add more.
 * abi's from truffle are copied to the dapp in make_abi.sh at the end of truffle commands.
 * The URI's of the NFT's have not been used. In the ideal world, they point to a QR code

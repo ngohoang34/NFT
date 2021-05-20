@@ -36,12 +36,6 @@ contract FestiTicket is ERC721, AccessControl {
         _;
     }
 
-    // Prevent NFT transfers unless sender has the TRANSFER_ROLE.
-//    function _beforeTokenTransfer(address from, address to, uint256 tokenId) internal virtual override {
-//        super._beforeTokenTransfer(from, to, tokenId);
-//        require(hasRole(TRANSFER_ROLE, _msgSender()), "Tickets can only be transfered by whoever has the TRANSFER_ROLE");
-//    }
-
     function mint(address to) public virtual returns (uint256){
       require(hasRole(MINTER_ROLE, _msgSender()), "Tickets can only be minted by whoever has the MINTER_ROLE");
       require(_tokenIdTracker.current() < _maxAmount, "Sold out!");
@@ -57,10 +51,6 @@ contract FestiTicket is ERC721, AccessControl {
 
     function getTicketTotal() external view returns (uint256) {
       return _tokenIdTracker.current();
-    }
-
-    function getCurrency() external view returns (address) {
-      return address(_currencyToken); //TODO Correct?
     }
 
     function ticketsAvailable() external view returns (bool) {

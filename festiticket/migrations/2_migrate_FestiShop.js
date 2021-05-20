@@ -2,8 +2,11 @@ const FestivalShop = artifacts.require("FestivalShop");
 const CurrencyToken = artifacts.require("CurrencyToken");
 const FestiTicket = artifacts.require("FestiTicket");
 var currencyTokenInstance, festiTicketInstance, shopInstance;
+
+
 const InitialTicketPrice = 10000; //10000 VNDT initial price
 const MaxTicketCount = 3;
+
 
 module.exports = async function(deployer, network, accounts) {
   await deployer.deploy(CurrencyToken);
@@ -21,7 +24,6 @@ module.exports = async function(deployer, network, accounts) {
 
   let address1 = web3.utils.toChecksumAddress(accounts[1])
   await currencyTokenInstance.transfer(address1,100000);
-
   let balance1 = parseInt(await currencyTokenInstance.balanceOf(address1));
   console.log("VNDT Balance account1 "+address1+" after deploy "+balance1);
 
@@ -29,5 +31,10 @@ module.exports = async function(deployer, network, accounts) {
   await currencyTokenInstance.transfer(address2,100000);
   let balance2 = parseInt(await currencyTokenInstance.balanceOf(address2));
   console.log("VNDT Balance account2 "+address2+" after deploy "+balance2);
+
+  let address3 = web3.utils.toChecksumAddress(accounts[3])
+  await currencyTokenInstance.transfer(address3,100000);
+  let balance3 = parseInt(await currencyTokenInstance.balanceOf(address3));
+  console.log("VNDT Balance account2 "+address3+" after deploy "+balance3);
 
 };
