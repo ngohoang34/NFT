@@ -127,7 +127,7 @@ async function getData() {
                 resaleTicketInfoCount++;
                 if (price <= 0) return true;
                 var t = "Ticket " + ticketId + " " + (price > 0 ? " is for sale for " + prettyBalance(price) : " is not for resale");
-                var _ticket = "<th>Ticket " + ticketId + "</th>" + "<th>" + prettyBalance(price) + " VNDT</th>";
+                var _ticket = "<th>Ticket No." + ticketId + "</th>" + "<th>" + prettyBalance(price) + " VNDT</th>";
                 shop.methods.getLastSellPrice(ticketId).call().then(function (sellPrice) {
                     console.log(ticketId);
                     t = t + (". Last sold for " + prettyBalance(sellPrice));
@@ -328,14 +328,20 @@ async function buy_common(recipient) {
 
 async function offer() {
     var tokenId = myTickets[currentTicket].ticketId;
-    var price = (10 ** VNDTDecimals) * prompt("Price to sell for:");
+    var input = prompt("Price to sell for:");
+    var price = (10 ** VNDTDecimals) * input;
     console.log("Offering ticket " + tokenId + " from account " + myAccount + " for a price of " + prettyBalance(price));
+    console.log("Type of price: "+typeof input);
     if (price > origTicketPrice * 1.1) {
         alert("Price must be less than 110% of original ticket price!");
         return;
     }
     if (price <= 0) {
         alert("Price must be greater than 0");
+        return;
+    }
+    if (typeof input != "number") {
+        alert("Price must be a number!");
         return;
     }
 

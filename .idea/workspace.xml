@@ -3,12 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="1da3c26a-8668-413b-a744-50560f7b27f5" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/Readme.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-compose.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/festiticket/contracts/CurrencyToken.sol" beforeDir="false" afterPath="$PROJECT_DIR$/festiticket/contracts/CurrencyToken.sol" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/festiticket/contracts/FestiTicket.sol" beforeDir="false" afterPath="$PROJECT_DIR$/festiticket/contracts/FestiTicket.sol" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/festiticket/contracts/FestivalShop.sol" beforeDir="false" afterPath="$PROJECT_DIR$/festiticket/contracts/FestivalShop.sol" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/festiticket/migrations/2_migrate_FestiShop.js" beforeDir="false" afterPath="$PROJECT_DIR$/festiticket/migrations/2_migrate_FestiShop.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/festiticket-dapp/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/festiticket-dapp/main.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,7 +36,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/festiticket-dapp" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -78,6 +73,8 @@
       <workItem from="1620893364874" duration="7261000" />
       <workItem from="1621251961104" duration="10455000" />
       <workItem from="1621406375005" duration="4969000" />
+      <workItem from="1622015526258" duration="3011000" />
+      <workItem from="1622799520958" duration="875000" />
     </task>
     <servers />
   </component>
