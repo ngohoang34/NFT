@@ -41,7 +41,7 @@ Make sure you have a running Docker environment configured.
 Also make sure you have chrome with the Metamask extension installed.
 
 ```
-git clone git@github.com/jeroenost/festiticket
+git clone git@github.com/ngohoang34/NFT
 cd festiticket
 docker-compose build
 docker-compose up
